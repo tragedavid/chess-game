@@ -23,6 +23,7 @@ function createCells() {
             this.cell = document.createElement("div");
             this.cell.setAttribute("data-col", j+1);
             this.cell.setAttribute("data-row", i+1);
+            this.cell.setAttribute("data-piece-color", null);
             this.cell.setAttribute("data-piece", null);
             initialisePieces(this.cell);
             // a cell is white when the row and col are both even or odd
@@ -45,33 +46,43 @@ function initialisePieces(cell) {
             // black pawns
             case '2':
                 cell.innerHTML = "&#x265F;";
+                cell.setAttribute("data-piece-color", "black");
+                cell.setAttribute("data-piece", "pawn");
             break;
             // white pawns
             case '7':
                 cell.innerHTML = "&#x2659;";
+                cell.setAttribute("data-piece-color", "white");
+                cell.setAttribute("data-piece", "pawn");
             break;    
             // first row (black pieces)
             case '1':
+                cell.setAttribute("data-piece-color", "black");
                 switch (cell.dataset["col"]) {
-                    // black towers
+                    // black rooks
                     case '1': case '8':
-                        cell.innerHTML = "&#x265C;";   
+                        cell.innerHTML = "&#x265C;";
+                        cell.setAttribute("data-piece", "rook");
                     break;
                     // black knights
                     case '2': case '7':
                         cell.innerHTML = "	&#x265E;";
+                        cell.setAttribute("data-piece", "knight");
                     break;
                     // black bishops
                     case '3': case '6':
                         cell.innerHTML = "&#x265D;";
+                        cell.setAttribute("data-piece", "bishop");
                     break
                     // black queen 
                     case '4':
                         cell.innerHTML = "&#x265B;";
+                        cell.setAttribute("data-piece", "queen");
                     break
                     // black knight
                     case '5':
                         cell.innerHTML = "&#x265A;";
+                        cell.setAttribute("data-piece", "knight");
                     break
 
                     default:
@@ -80,26 +91,32 @@ function initialisePieces(cell) {
             break
             // 8th row (white pieces)
             case '8':
+                cell.setAttribute("data-piece-color", "white");
                 switch (cell.dataset["col"]) {
                     // white rooks
                     case '1': case '8':
-                        cell.innerHTML = "&#x2656;";   
+                        cell.innerHTML = "&#x2656;";
+                        cell.setAttribute("data-piece", "rook");
                     break;
                     // white knights
                     case '2': case '7':
                         cell.innerHTML = "&#x2658;";
+                        cell.setAttribute("data-piece", "knight");
                     break;
                     // white bishops
                     case '3': case '6':
                         cell.innerHTML = "&#x2657;";
+                        cell.setAttribute("data-piece", "bishop");
                     break
                     // white queen
                     case '4':
                         cell.innerHTML = "&#x2655;";
+                        cell.setAttribute("data-piece", "queen");
                     break
                     // white king
                     case '5':
                         cell.innerHTML = "&#x2654;";
+                        cell.setAttribute("data-piece", "king");
                     break
 
                     default:
@@ -111,10 +128,8 @@ function initialisePieces(cell) {
             break;
         }
     }
-    
-
-
-    // cell.innerHTML = "&#9816;";
-    // cell.style.color = "red";
 }
 
+function movePiece() {
+
+}
